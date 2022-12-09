@@ -1,0 +1,46 @@
+import java.util.Scanner;
+
+public class Book{
+
+String name;
+String author;
+int num_pages;
+double price;
+
+public static void main(String[] args)
+{
+System.out.println("This is start!");
+set_value();
+get_value();
+}
+
+
+public static void set_value()
+{
+Scanner sc=new Scanner(System.in);
+
+System.out.println("Enter the name: ");
+name = sc.nextLine();
+
+System.out.println("Enter the author's name: ");
+author = sc.nextLine();
+
+System.out.println("Enter the number of pages in book: ");
+num_pages = sc.nextInt();
+
+
+System.out.println("Enter the price of the book: ");
+price = sc.nextDouble();
+}
+
+
+public static void get_value()
+{
+System.out.println("The name is: "+name);
+System.out.println("The author's name is: "+author);
+System.out.println("No. of pages : "+num_pages);
+System.out.println("Book price: "+price);
+}
+
+
+}
