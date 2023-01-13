@@ -1,0 +1,69 @@
+class WrongFAgeException extends Exception{
+	private int fage;
+	
+	WrongFAgeException(int a){
+		fage=a;
+	}
+
+	public String toString(){
+		return "WrongFAgeException [ "+fage+" invalid father's age as "+fage+"<0 ]";
+	} 
+}
+
+class WrongSAgeException extends Exception{
+	private int sage,fage;
+	
+	WrongSAgeException(int s, int f){
+		sage=s;
+		fage=f;
+	}
+
+	public String toString(){
+		return "WrongSAgeException [ "+sage+" invalid son's age as "+sage+">="+fage+" ]";
+	}
+}
+
+class Father{
+
+	static void FatherAge(int a) throws WrongFAgeException
+	{
+		System.out.println("Called FatherAge("+a+")");
+		if(a<0)
+			throw new WrongFAgeException(a);
+		System.out.println("Normal exit");
+	}
+}
+
+class Son extends Father{
+
+	static void SonAge(int a, int b) throws WrongSAgeException
+	{
+		System.out.println("Called SonAge("+a+","+b+")");
+		if(a>=b)
+			throw new WrongSAgeException(a,b);
+		System.out.println("Normal exit");
+	}
+}
+
+class AgeExceptionDemo{
+
+	public static void main(String args[]){
+		try{
+			FatherAge(25);
+			FatherAge(-90);
+		}
+
+		catch(WrongFAgeException e){
+			System.out.println("Caught " +e);
+		}
+
+		try{
+			SonAge(2,25);
+			SonAge(25,25);
+		}
+
+		catch(WrongSAgeException e){
+			System.out.println("Caught " +e);
+		}
+	}
+}
